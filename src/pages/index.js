@@ -1,3 +1,4 @@
+import CurrentCard from '@/components/CurrentCard'
 import FormSearch from '@/components/FormSearch'
 import { Inter } from 'next/font/google'
 
@@ -11,6 +12,7 @@ export default function Home() {
         App del Clima
     </h1>
       <FormSearch />
+      <CurrentCard />
       </main>
     </>
   )
