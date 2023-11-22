@@ -1,12 +1,13 @@
 import { useState } from 'react'
 
-const API = process.env.API_URL
-const VERSION = process.env.API_URL_VERSION
-const API_KEY = process.env.API_KEY
-const URL = `${API}/${VERSION}/`
+const API = process.env.NEXT_PUBLIC_API_URL
+const VERSION = process.env.NEXT_PUBLIC_API_URL_VERSION
+const API_KEY = process.env.NEXT_PUBLIC_API_KEY
+const URL = `${API}${VERSION}`
 
 const searchCity = async (city) => {
-  const response = await fetch(`${URL}search.json?q=${city}&key=${API_KEY}`)
+
+  const response = await fetch(`${URL}current.json?q=${city}&lang=es&key=${API_KEY}`)
   const data = await response.json()
   return data
   }
@@ -18,7 +19,7 @@ export default function FormSearch() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     const data = await searchCity(sCity)
-    console.log(data)
+    console.log("data", data)
   }
 
   return (
@@ -45,7 +46,7 @@ export default function FormSearch() {
           autoComplete="on"
           maxLength={50}
           minLength={3}
-          spellCheck="false"
+          spellCheck="true"
 
           autoFocus
         />
