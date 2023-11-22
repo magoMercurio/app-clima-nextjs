@@ -1,25 +1,17 @@
 import { useState } from 'react'
+import useSearchCity from '@/hooks/useSearchCity'
 
-const API = process.env.NEXT_PUBLIC_API_URL
-const VERSION = process.env.NEXT_PUBLIC_API_URL_VERSION
-const API_KEY = process.env.NEXT_PUBLIC_API_KEY
-const URL = `${API}${VERSION}`
-
-const searchCity = async (city) => {
-
-  const response = await fetch(`${URL}current.json?q=${city}&lang=es&key=${API_KEY}`)
-  const data = await response.json()
-  return data
-  }
 
 export default function FormSearch() {
 
-  const [sCity, setSCity] = useState('');
+  const { searchCity, weatherData, loading, error } = useSearchCity()
+
+  const [sCity, setSCity] = useState('')
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const data = await searchCity(sCity)
-    console.log("data", data)
+    searchCity(sCity)
+
   }
 
   return (
@@ -50,12 +42,22 @@ export default function FormSearch() {
 
           autoFocus
         />
-        <button className="bg-blue-400 text-white rounded-xl p-2 text-sm"
+        <button className="transition-colors duration-150 ease-in-out delay-150 bg-blue-600  text-white rounded-xl p-2 text-sm hover:bg-blue-400"
         onClick={handleSubmit}
         >
           Buscar
         </button>
       </form>
+       {/* Resto de tu componente FormSearch */}
+       {loading && <p>Cargando...</p>}
+      {error && <p>Error: {error.message}</p>}
+      {weatherData && (
+        <div>
+          {/* Renderiza los datos del clima según tus necesidades */}
+          <p>Temperatura: {weatherData.current.temp_c}°C</p>
+          {/* Agrega más elementos según sea necesario */}
+        </div>
+      )}
     </>
   )
   

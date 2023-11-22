@@ -26,8 +26,8 @@ const useSearchCity = () => {
 
   useEffect(() => {
     // Aquí puedes realizar acciones adicionales cuando cambia weatherData
-    console.log('Weather Data:', weatherData);
-  }, [weatherData]);
+    console.log('Weather Data:', weatherData);  //QUITAR EL CONSOLE LOG AL TERMINAR PROYECTO
+  }, [weatherData]); 
 
   return { searchCity, weatherData, loading, error };
 
