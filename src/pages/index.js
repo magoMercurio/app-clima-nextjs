@@ -7,9 +7,9 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
   return (
     <>
-      <main>
-      <h1 className='mt-4 mb-4 text-2xl capitalize flex justify-center items-center'>
-        app del clima
+      <main className='flex flex-col justify-center items-center max-w-7xl mx-auto py-6 sm:px-6 lg:px-8'>
+      <h1 className='mt-4 mb-4 text-2xl flex justify-center items-center'>
+        App del Clima
     </h1>
       <FormSearch />
       <CurrentCard />

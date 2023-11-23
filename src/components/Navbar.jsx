@@ -20,7 +20,7 @@ export default function Navbar() {
         <ul className="flex flex-row gap-4">
           {socialLinks.map((Link) => {
             return (
-              <li key={Link.label} className="bg-slate-700 rounded-lg w-7 h-7 flex items-center justify-center " >
+              <li key={Link.label} className="bg-slate-700 rounded-lg w-7 h-7 flex items-center justify-center cursor-pointer " >
                 <a href={Link.href} target="_blank" rel="noreferrer" className="text-blue-500 hover:text-blue-300" >
                   {Link.icon}
                 </a>
