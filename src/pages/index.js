@@ -8,8 +8,8 @@ export default function Home() {
   return (
     <>
       <main>
-      <h1 className='mt-4 mb-4 text-2xl flex justify-center items-center'>
-        App del Clima
+      <h1 className='mt-4 mb-4 text-2xl capitalize flex justify-center items-center'>
+        app del clima
     </h1>
       <FormSearch />
       <CurrentCard />

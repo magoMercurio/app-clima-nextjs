@@ -1,10 +1,10 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import useSearchCity from '@/hooks/useSearchCity'
-
 
 export default function FormSearch() {
 
-  const { searchCity, weatherData, loading, error } = useSearchCity()
+
+  const { searchCity } = useSearchCity()
 
   const [sCity, setSCity] = useState('')
 
@@ -48,16 +48,6 @@ export default function FormSearch() {
           Buscar
         </button>
       </form>
-       {/* Resto de tu componente FormSearch */}
-       {loading && <p>Cargando...</p>}
-      {error && <p>Error: {error.message}</p>}
-      {weatherData && (
-        <div>
-          {/* Renderiza los datos del clima según tus necesidades */}
-          <p>Temperatura: {weatherData.current.temp_c}°C</p>
-          {/* Agrega más elementos según sea necesario */}
-        </div>
-      )}
     </>
   )
   
