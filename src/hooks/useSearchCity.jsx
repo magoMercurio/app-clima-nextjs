@@ -1,8 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import { WeatherContext } from "@/Context/WeatherContext"
 
-
-
 const useSearchCity = () => {
   const API = process.env.NEXT_PUBLIC_API_URL;
   const VERSION = process.env.NEXT_PUBLIC_API_URL_VERSION;
@@ -10,12 +8,9 @@ const useSearchCity = () => {
   const URL = `${API}${VERSION}`;
 
   const context = useContext(WeatherContext);
-
   const { weatherData, setWeatherData, loading,  setLoading, error, setError } = context
-  // revisar como recibir los datos
 
   const searchCity = async (city) => {
-
 
     try {
       setLoading(true);
@@ -31,8 +26,7 @@ const useSearchCity = () => {
   };
 
   useEffect(() => {
-    // Aquí puedes realizar acciones adicionales cuando cambia weatherData
-    console.log('Weather Data:', weatherData); // QUITAR EL CONSOLE LOG AL TERMINAR PROYECTO
+
   }, [weatherData]);
 
   return { searchCity, weatherData, loading, error };
