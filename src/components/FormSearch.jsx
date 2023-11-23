@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import useSearchCity from '@/hooks/useSearchCity'
 
 export default function FormSearch() {
@@ -7,6 +7,12 @@ export default function FormSearch() {
   const { searchCity } = useSearchCity()
 
   const [sCity, setSCity] = useState('')
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    // Enfocar automáticamente el input cuando el componente se monta
+    inputRef.current.focus();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -28,6 +34,7 @@ export default function FormSearch() {
           ciudad
         </label>
         <input className="border-2 border-gray-300 hover:border-blue-400 rounded-xl p-2 text-sm text-black"
+          ref={inputRef}
           type="text"
           name="city"
           id="city"
@@ -39,7 +46,6 @@ export default function FormSearch() {
           maxLength={50}
           minLength={3}
           spellCheck="true"
-
           autoFocus
         />
         <button className="transition-colors duration-150 ease-in-out delay-150 bg-blue-600  text-white rounded-xl p-2 text-sm hover:bg-blue-400"
